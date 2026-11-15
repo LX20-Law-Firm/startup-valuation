@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "startup-valuation"
+version = "0.1.0"
+description = "Five startup valuation calculations."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "LX20 Law Firm", email = "noreply@lx20lawfirm.com"}]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["ruff==0.17.5"]
+
+[project.urls]
+Repository = "https://github.com/LX20-Law-Firm/startup-valuation"
+
+[tool.setuptools.packages.find]
+include = ["startup_valuation*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

@@ -1,0 +1,98 @@
+rules:
+- id: python-no-dynamic-evaluation
+  languages:
+  - python
+  severity: ERROR
+  message: Avoid execution of dynamically supplied code.
+  pattern-either:
+  - pattern: eval(...)
+  - pattern: exec(...)
+- id: python-no-shell-execution
+  languages:
+  - python
+  severity: ERROR
+  message: Use argument arrays without a shell.
+  pattern-either:
+  - pattern: subprocess.$F(..., shell=True, ...)
+  - pattern: os.system(...)
+  - pattern: os.popen(...)
+- id: python-no-unsafe-deserialization
+  languages:
+  - python
+  severity: ERROR
+  message: Do not deserialize executable input.
+  pattern-either:
+  - pattern: pickle.loads(...)
+  - pattern: pickle.load(...)
+  - pattern: yaml.unsafe_load(...)
+  - pattern: yaml.load($X)
+- id: python-no-disabled-tls
+  languages:
+  - python
+  severity: ERROR
+  message: TLS verification must remain enabled.
+  pattern-either:
+  - pattern: requests.$F(..., verify=False, ...)
+  - pattern: ssl._create_unverified_context(...)
+- id: python-no-insecure-temp-name
+  languages:
+  - python
+  severity: ERROR
+  message: Create temporary files atomically.
+  pattern: tempfile.mktemp(...)
+- id: python-no-weak-password-hash
+  languages:
+  - python
+  severity: ERROR
+  message: Prefer SHA-256 for identifiers and modern password hashing for passwords.
+  pattern-either:
+  - pattern: hashlib.md5(...)
+  - pattern: hashlib.sha1(...)
+- id: python-no-extractall
+  languages:
+  - python
+  severity: ERROR
+  message: Archive extraction requires path validation.
+  pattern: $ARCHIVE.extractall(...)
+- id: workflow-no-expression-in-shell
+  languages:
+  - generic
+  severity: ERROR
+  message: Pass untrusted workflow inputs through environment variables and argument
+    arrays.
+  pattern-regex: (?m)^\s*(?:run:|python |sh |bash ).*\$\{\{\s*(?:inputs\.|github\.event\.)
+- id: workflow-no-write-all
+  languages:
+  - generic
+  severity: ERROR
+  message: Test workflows must not request write-all permissions.
+  pattern-regex: (?m)^\s*permissions:\s*write-all\s*$
+- id: svg-no-active-content
+  languages:
+  - generic
+  severity: ERROR
+  message: SVG headers must be self-contained and passive.
+  pattern-regex: (?i)<(?:script|foreignObject)\b
+  paths:
+    include:
+    - '*.svg'
+- id: no-private-key-block
+  languages:
+  - generic
+  severity: ERROR
+  message: Private keys must never be committed.
+  pattern-regex: '-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'
+- id: javascript-no-dynamic-evaluation
+  languages: [javascript]
+  severity: ERROR
+  message: Do not execute user input.
+  pattern-either:
+    - pattern: eval(...)
+    - pattern: new Function(...)
+- id: javascript-no-html-injection
+  languages: [javascript]
+  severity: ERROR
+  message: Render user input as text.
+  pattern-either:
+    - pattern: $X.innerHTML = $Y
+    - pattern: document.write(...)

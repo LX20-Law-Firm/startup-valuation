@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this software when using its calculations or output."
+title: "startup-valuation"
+abstract: "Five startup valuation calculations."
+type: software
+version: 0.1.0
+authors:
+  - name: LX20 Law Firm
+repository-code: "https://github.com/LX20-Law-Firm/startup-valuation"
+license: Apache-2.0

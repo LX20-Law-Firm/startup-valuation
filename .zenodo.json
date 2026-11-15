@@ -1,0 +1,19 @@
+{
+  "title": "startup-valuation",
+  "description": "Five startup valuation calculations.",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "LX20 Law Firm"
+    }
+  ],
+  "license": "Apache-2.0",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/LX20-Law-Firm/startup-valuation",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

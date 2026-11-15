@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Startup valuation | LX20 Law Firm</title><link rel="stylesheet" href="style.css"></head>
+<body><main><header><p class="eyebrow">LX20 Law Firm</p><h1>Startup valuation</h1><p>Five methods with explicit numerical assumptions. Select a method and edit its inputs.</p></header>
+<p><a href="https://lx20lawfirm.com/en/tools/startup-valuation">Full tool on lx20lawfirm.com</a> <a href="https://github.com/LX20-Law-Firm/startup-valuation#readme">Formulas and conventions</a></p>
+<form id="calculator"><label for="method">Method</label><select id="method"><option value="berkus">Berkus</option><option value="scorecard">Scorecard</option><option value="venture_capital">Venture Capital</option><option value="dcf">Dcf</option><option value="first_chicago">First Chicago</option></select><label for="inputs">Inputs (JSON)</label>
+<textarea id="inputs" spellcheck="false" rows="18">{
+  "contributions": [
+    100000,
+    200000,
+    300000,
+    150000,
+    250000
+  ]
+}</textarea>
+<button type="submit">Calculate</button></form>
+<section aria-labelledby="result-title"><h2 id="result-title">Result</h2><pre id="output" role="status" aria-live="polite">Enter inputs and calculate.</pre></section>
+<p>Amounts use one currency. Examples are synthetic inputs. All calculations run in this browser.</p>
+<noscript>Enable JavaScript to calculate, or use the Python package.</noscript>
+</main><script src="calculator.js"></script><script src="ui.js"></script></body></html>
